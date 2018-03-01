@@ -4,17 +4,14 @@ var google;
 function init() {
     // Basic options for a simple Google Map
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-    // var myLatlng = new google.maps.LatLng(40.71751, -73.990922);
-    var myLatlng = new google.maps.LatLng(51.0825523,3.574402,11);
-    // 39.399872
-    // -8.224454
+    var centerOfLondon = new google.maps.LatLng(51.490951,-0.16512);
     
     var mapOptions = {
         // How zoomed in you want the map to start at (always required)
-        zoom: 7,
+        zoom: 13,
 
         // The latitude and longitude to center the map (always required)
-        center: myLatlng,
+        center: centerOfLondon,
 
         // How you would like to style the map. 
         scrollwheel: false,
@@ -30,20 +27,16 @@ function init() {
     // Create the Google Map using out element and options defined above
     var map = new google.maps.Map(mapElement, mapOptions);
     
-    var addresses = ['Ghent'];
+    // Add all company addresses
+    var ecclestonYards = new google.maps.LatLng(51.4935345, -0.148501);
+    var addressesAsLatLang = [ecclestonYards];
 
-    for (var x = 0; x < addresses.length; x++) {
-        $.getJSON('//maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
-            var p = data.results[0].geometry.location
-            var latlng = new google.maps.LatLng(p.lat, p.lng);
-            new google.maps.Marker({
-                position: latlng,
-                map: map,
-                icon: 'images/loc.png'
-            });
-
+    for (var x = 0; x < addressesAsLatLang.length; x++) {
+        new google.maps.Marker({
+            position: addressesAsLatLang[x],
+            map: map,
+            icon: 'images/loc.png'
         });
     }
-    
 }
 google.maps.event.addDomListener(window, 'load', init);
