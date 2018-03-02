@@ -443,32 +443,21 @@
 
 	// Document on load.
 	$(function(){
-
-		parallax();
-
+		//parallax();
 		burgerMenu();
-
 		clickMenu();
-
 		windowScroll();
-
 		navigationSection();
-
 		goToTop();
-
 
 		// Animations
 		homeAnimate();
-		introAnimate();
+		/*introAnimate();
 		workAnimate();
 		testimonialAnimate();
 		servicesAnimate();
 		aboutAnimate();
 		countersAnimate();
-		contactAnimate();
-		
-
+		contactAnimate();*/
 	});
-
-
 }());
