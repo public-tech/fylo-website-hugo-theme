@@ -11,8 +11,10 @@
         {{ partial "nav.html" .}}
 
 		{{ partial "hero.html" .}}
-		
-        {{ partial "intro.html" .}}
+
+		{{ if .Site.Params.intro.enable }}
+	        {{ partial "intro.html" .}}
+		{{ end }}
 
 		{{ if .Site.Params.work.enable }}
        		{{ partial "work.html" .}}
